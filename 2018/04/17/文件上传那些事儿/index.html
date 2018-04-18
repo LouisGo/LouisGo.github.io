@@ -103,12 +103,12 @@
 <meta name="keywords" content="JavaScript,jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件上传那些事儿">
-<meta property="og:url" content="http://yoursite.com/2018/04/17/浅谈文件上传那些事儿/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/04/17/文件上传那些事儿/index.html">
 <meta property="og:site_name" content="徐凌志的博客">
 <meta property="og:description" content="背景在之前的工作当中，遇到有文件上传的需求基本都是通过引用插件来实现的。效果是完成了，但是其实并没有一个系统的认识，理解比较粗浅。 鲁迅曾经曰过：  好读书，也要求甚解。诸葛村夫不求甚解，所以多智也只能近妖  最近又遇到了相关的需求，在阅读了Deng mu qin（大神都是这样的，只留下了一串拼音字符，不带走一片云彩~）前辈的upload.js源码后，觉得可能跟业务比较耦合，通用性相对不是那么好">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx3.sinaimg.cn/mw690/be7ff520gy1fqfro6dcfuj208k070wgw.jpg">
-<meta property="og:updated_time" content="2018-04-18T01:46:04.866Z">
+<meta property="og:updated_time" content="2018-04-18T02:14:02.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件上传那些事儿">
 <meta name="twitter:description" content="背景在之前的工作当中，遇到有文件上传的需求基本都是通过引用插件来实现的。效果是完成了，但是其实并没有一个系统的认识，理解比较粗浅。 鲁迅曾经曰过：  好读书，也要求甚解。诸葛村夫不求甚解，所以多智也只能近妖  最近又遇到了相关的需求，在阅读了Deng mu qin（大神都是这样的，只留下了一串拼音字符，不带走一片云彩~）前辈的upload.js源码后，觉得可能跟业务比较耦合，通用性相对不是那么好">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/17/浅谈文件上传那些事儿/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/17/文件上传那些事儿/"/>
 
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/浅谈文件上传那些事儿/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/文件上传那些事儿/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Louis Xu">
@@ -360,7 +360,7 @@
 
           
           
-             <span id="/2018/04/17/浅谈文件上传那些事儿/" class="leancloud_visitors" data-flag-title="文件上传那些事儿">
+             <span id="/2018/04/17/文件上传那些事儿/" class="leancloud_visitors" data-flag-title="文件上传那些事儿">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,10 +401,10 @@
 <h1 id="一些热身准备"><a href="#一些热身准备" class="headerlink" title="一些热身准备"></a>一些热身准备</h1><h2 id="FileUpload对象"><a href="#FileUpload对象" class="headerlink" title="FileUpload对象"></a>FileUpload对象</h2><p>初来乍到，萌新们可能跟我一样对FileUpload对象一无所知，无妨，先看一个最简单的例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>当上面的标签出现在页面中时，一个FileUpload对象就会被创建，然后就会出现一个大家熟悉的银灰色小方块，点击选择文件，出现对应的文件名称和格式。</p>
+<a id="more"></a>
 <h2 id="XMLHttpRequest请求"><a href="#XMLHttpRequest请求" class="headerlink" title="XMLHttpRequest请求"></a>XMLHttpRequest请求</h2><p>现代浏览器中（<strong>IE10 &amp; IE10+</strong>），XMLHttpRequest请求可以传输FormData对象，可以通过XMLHttpRequest对象的upload属性的onprogress事件回调方法获取传输进度，这也是在下的xupload.js的安生立命之本。什么？你说IE9IE8IE7IE6？溜了溜了。</p>
 <h2 id="注册插件"><a href="#注册插件" class="headerlink" title="注册插件"></a>注册插件</h2><p>通过一个经典的自执行匿名函数，再将方法注册到jQuery上，就可以基本实现一个jq插件的初步建立：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ;冒号防止上下文中有其他方法未写;从而引起不必要的麻烦</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 创建构造函数Upload</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Upload</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Upload的原型方法</span></span><br><span class="line">    Upload.prototype = &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 实例化一个Upload，挂载到jQuery</span></span><br><span class="line">    $.xupload = <span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Upload(config)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <h1 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h1><h2 id="Upload构造函数"><a href="#Upload构造函数" class="headerlink" title="Upload构造函数"></a>Upload构造函数</h2><p>一个构造函数需要做些什么呢？</p>
 <ol>
 <li>通过挂载到this的方式，初始化一些后续需要使用到的变量，此过程可以视后续代码需要不断增量更新</li>

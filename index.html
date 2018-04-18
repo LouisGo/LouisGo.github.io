@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/浅谈文件上传那些事儿/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/文件上传那些事儿/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Louis Xu">
@@ -312,7 +312,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/17/浅谈文件上传那些事儿/" itemprop="url">文件上传那些事儿</a></h1>
+                <a class="post-title-link" href="/2018/04/17/文件上传那些事儿/" itemprop="url">文件上传那些事儿</a></h1>
         
 
         <div class="post-meta">
@@ -359,7 +359,7 @@
 
           
           
-             <span id="/2018/04/17/浅谈文件上传那些事儿/" class="leancloud_visitors" data-flag-title="文件上传那些事儿">
+             <span id="/2018/04/17/文件上传那些事儿/" class="leancloud_visitors" data-flag-title="文件上传那些事儿">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,12 +401,9 @@
 <h1 id="一些热身准备"><a href="#一些热身准备" class="headerlink" title="一些热身准备"></a>一些热身准备</h1><h2 id="FileUpload对象"><a href="#FileUpload对象" class="headerlink" title="FileUpload对象"></a>FileUpload对象</h2><p>初来乍到，萌新们可能跟我一样对FileUpload对象一无所知，无妨，先看一个最简单的例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>当上面的标签出现在页面中时，一个FileUpload对象就会被创建，然后就会出现一个大家熟悉的银灰色小方块，点击选择文件，出现对应的文件名称和格式。</p>
-<h2 id="XMLHttpRequest请求"><a href="#XMLHttpRequest请求" class="headerlink" title="XMLHttpRequest请求"></a>XMLHttpRequest请求</h2><p>现代浏览器中（<strong>IE10 &amp; IE10+</strong>），XMLHttpRequest请求可以传输FormData对象，可以通过XMLHttpRequest对象的upload属性的onprogress事件回调方法获取传输进度，这也是在下的xupload.js的安生立命之本。什么？你说IE9IE8IE7IE6？溜了溜了。</p>
-<h2 id="注册插件"><a href="#注册插件" class="headerlink" title="注册插件"></a>注册插件</h2><p>通过一个经典的自执行匿名函数，再将方法注册到jQuery上，就可以基本实现一个jq插件的初步建立：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ;冒号防止上下文中有其他方法未写;从而引起不必要的麻烦</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 创建构造函数Upload</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Upload</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Upload的原型方法</span></span><br><span class="line">    Upload.prototype = &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 实例化一个Upload，挂载到jQuery</span></span><br><span class="line">    $.xupload = <span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Upload(config)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/17/浅谈文件上传那些事儿/#more" rel="contents">
+            <a class="btn" href="/2018/04/17/文件上传那些事儿/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
