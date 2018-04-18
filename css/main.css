@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #858337;
+  background: #ff6629;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2996,6 +2996,7 @@ a.fancybox {
   color: #222;
 }
 #qrtips {
+  margin-top: 40px;
   text-align: center;
   font-size: 12px;
 }
