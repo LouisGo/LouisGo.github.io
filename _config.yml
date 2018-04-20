@@ -79,7 +79,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/LouisGo/LouisGo.github.io
+  repo: https://LouisGo:smmdn890@github.com/LouisGo/LouisGo.github.io
   branch: master
 
 # Github emoji
