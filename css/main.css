@@ -1856,7 +1856,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b0df44;
+  background: #39ff47;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2996,6 +2996,7 @@ img#github-emoji {
   border-bottom: none;
 }
 .post-body a:hover {
+  color: #fc6423;
   border-bottom: none;
   text-decoration: underline;
 }
