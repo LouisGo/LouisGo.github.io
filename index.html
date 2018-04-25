@@ -345,7 +345,7 @@
               
                 <span class="post-meta-item-text">更新于：</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-25T16:35:08+08:00">2018-04-25</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-25T16:58:57+08:00">2018-04-25</time>
             
           </span>
 
@@ -409,14 +409,15 @@
         
           <div class="note info"><p>本来是基于 <a href="HTTP://www.dailichun.com/2018/03/12/whenyouenteraurl.html" target="_blank" rel="noopener">从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！</a><img id="github-emoji" alt="100" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4af.png?v8" height="20" width="20"> 的整理和归纳，感谢大佬，侵删。</p></div>
 
-<h1 id="Step1-从浏览器接收URL到开启网络请求线程"><a href="#Step1-从浏览器接收URL到开启网络请求线程" class="headerlink" title="Step1. 从浏览器接收URL到开启网络请求线程"></a>Step1. 从浏览器接收URL到开启网络请求线程</h1><h2 id="多进程的浏览器"><a href="#多进程的浏览器" class="headerlink" title="多进程的浏览器"></a>多进程的浏览器</h2><ul>
+<h1 id="Step1-从浏览器接收URL到开启网络请求线程"><a href="#Step1-从浏览器接收URL到开启网络请求线程" class="headerlink" title="Step1. 从浏览器接收URL到开启网络请求线程"></a>Step1. 从浏览器接收URL到开启网络请求线程</h1><p>首先要了解浏览器的多进程，其中渲染进程里又有许多线程去处理各个任务。</p>
+<h2 id="多进程的浏览器"><a href="#多进程的浏览器" class="headerlink" title="多进程的浏览器"></a>多进程的浏览器</h2><ul>
 <li><p>主控进程：浏览器的主进程（负责协调、主控），只有一个</p>
 </li>
 <li><p>第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建</p>
 </li>
 <li><p>GPU进程：最多一个，用于3D绘制</p>
 </li>
-<li><p>浏览器渲染进程（内核）：默认每个Tab页面一个进程，互不影响，控制页面渲染，脚本执行，事件处理等（有时候会优化，如多个空白Tab会合并成一个进程）</p>
+<li><p><strong>浏览器渲染进程（内核）</strong>：默认每个Tab页面一个进程，互不影响，控制页面渲染，脚本执行，事件处理等（有时候会优化，如多个空白Tab会合并成一个进程）</p>
 </li>
 </ul>
 <h2 id="多线程的浏览器渲染进程（内核）"><a href="#多线程的浏览器渲染进程（内核）" class="headerlink" title="多线程的浏览器渲染进程（内核）"></a>多线程的浏览器渲染进程（内核）</h2><ul>
