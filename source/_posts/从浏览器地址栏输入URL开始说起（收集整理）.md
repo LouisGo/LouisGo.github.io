@@ -60,7 +60,7 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 ## 更多
 
-[从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理](https://segmentfault.com/a/1190000012925872)
+[从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理](HTTPS://segmentfault.com/a/1190000012925872)
 
 # Step2. 开启网络线程到发出一个完整的http请求
 
@@ -273,9 +273,9 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 请求头和实体消息之间有一个`CRLF`分隔，响应头部和响应实体之间用一个`CRLF`分隔
 
-### 某http报文结构的简要分析
+### 某HTTP报文结构的简要分析
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/http_ajax_headers.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/http_ajax_headers.png)
 
 ## Cookie以及优化
 
@@ -317,11 +317,11 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 但是进行了多域名拆分，在移动端，如果请求的域名数过多，会降低请求速度（因为域名整套解析流程是很耗费时间的，而且移动端一般带宽都比不上pc）。
 
-此时就需要用到一种优化方案：**`DNS-prefetch`**（让浏览器空闲时提前解析`DNS`域名，不过也请合理使用，勿滥用）。
+此时就需要用到一种优化方案：**`dns-prefetch`**（让浏览器空闲时提前解析`DNS`域名，不过也请合理使用，勿滥用）。
 
 **cookie总结**
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/http_cookie_session.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/http_cookie_session.png)
 
 ## gzip压缩
 
@@ -339,13 +339,13 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 短连接的定义：通信双方有数据交互时，就建立一个`TCP`连接，数据发送完成后，则断开此`TCP`连接。
 
-`HTTP1.0`中，默认使用的是短连接，也就是说，浏览器没进行一次`HTTP`操作，就建立一次连接，任务结束就中断连接，譬如每一个静态资源请求时都是一个单独的连接
+`HTTP1.0`中，默认使用的是短连接，也就是说，浏览器每进行一次`HTTP`操作，就建立一次连接，任务结束就中断连接，譬如每一个静态资源请求时都是一个单独的连接
 
 `HTTP1.1`起，默认使用长连接，使用长连接会有这一行`Connection: keep-alive`，在长连接的情况下，当一个网页打开完成后，客户端和服务端之间用于传输`HTTP`的`TCP`连接不会关闭，如果客户端再次访问这个服务器的页面，会继续使用这一条已经建立的连接
 
 ## HTTP 2.0
 
-`HTTP2.0`不是`https`，它相当于是`HTTP`的下一代规范（譬如`https`的请求可以是`HTTP2.0`规范的）。
+`HTTP2.0`不是`HTTPS`，它相当于是`HTTP`的下一代规范（譬如`HTTPS`的请求可以是`HTTP2.0`规范的）。
 
 `HTTP2.0`和`HTTP1.1`的不同之处：
 
@@ -369,11 +369,11 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 ## HTTPS
 
-`https`就是安全版本的`HTTP`，譬如一些支付等操作基本都是基于`https`的，因为`HTTP`请求的安全系数太低了。
+`HTTPS`就是安全版本的`HTTP`，譬如一些支付等操作基本都是基于`HTTPS`的，因为`HTTP`请求的安全系数太低了。
 
-简单来看，`https`与`HTTP`的区别就是： 在请求前，会建立ssl链接，确保接下来的通信都是加密的，无法被轻易截取分析
+简单来看，`HTTPS`与`HTTP`的区别就是： 在请求前，会建立`SSL`链接，确保接下来的通信都是加密的，无法被轻易截取分析
 
-一般来说，如果要将网站升级成`https`，需要后端支持（后端需要申请证书等），然后`https`的开销也比`HTTP`要大（因为需要额外建立安全链接以及加密等），所以一般来说http2.0配合`https`的体验更佳（因为`http2.0更`快了）
+一般来说，如果要将网站升级成`HTTPS`，需要后端支持（后端需要申请证书等），然后`HTTPS`的开销也比`HTTP`要大（因为需要额外建立安全链接以及加密等），所以一般来说`HTTP2.0`配合`HTTPS`的体验更佳（因为`HTTP2.0`更快了）
 
 一般来说，主要关注的就是`SSL/TLS`的握手流程，如下：
 
@@ -404,7 +404,7 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
     
 5. 浏览器解密并计算握手消息的`HASH`，如果与服务端发来的`HASH`一致，此时握手过程结束，
 
-**之后所有的`https`通信数据将由之前浏览器生成的`Session key`并利用对称加密算法进行加密**
+**之后所有的`HTTPS`通信数据将由之前浏览器生成的`Session key`并利用对称加密算法进行加密**
 
 # By HTTP缓存
 
@@ -476,7 +476,7 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 ## 各缓存头部的关系
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/http_cache.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/http_cache.png)
 
 # Step4. 客户端解析页面
 
@@ -498,13 +498,13 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 如下图：
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rending.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rending.png)
 
 ## 1.解析HTML，构建DOM树
 
 浏览器处理流程如下图：
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_html.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_html.png)
 
 其中的一些重点过程：
 
@@ -519,7 +519,7 @@ keywords: HTTP,TCP/IP,浏览器渲染,网络请求,CSS可视化格式模型,前�
 
 最后的DOM树如下：
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_dom.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_dom.png)
 
 ## 2.构建CSSOM树
 
@@ -547,7 +547,7 @@ img {
 
 那么最终的CSSOM树就是：
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_cssom.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_cssom.png)
 
 ## 3.构建render树
 
@@ -559,11 +559,11 @@ img {
 
 整体来说可以看图：
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_rendertree.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_rendertree.png)
 
 ## 4.布局和绘制render树（渲染）
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rendingprocess.jpg)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rendingprocess.jpg)
 
 图中重要的四个步骤就是：
 
@@ -632,13 +632,13 @@ img {
 
 ### 更多
 
-[关于普通图层和复合图层更详细的介绍](https://segmentfault.com/a/1190000012925872#articleHeader16)
+[关于普通图层和复合图层更详细的介绍](HTTPS://segmentfault.com/a/1190000012925872#articleHeader16)
 
 ## Chrome中的调试
 
 Chrome开发者工具-`Perfomance`查看详细渲染过程：
 
-![](https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_chrome_debug_1.png)
+![](HTTPS://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_chrome_debug_1.png)
 
 ## 资源外链的下载（JS、CSS、IMG等）
 
@@ -694,8 +694,8 @@ Chrome开发者工具-`Perfomance`查看详细渲染过程：
 
 ## 跨域
 
-[ajax跨域，这应该是最全的解决方案了](https://segmentfault.com/a/1190000012469713)
+[ajax跨域，这应该是最全的解决方案了](HTTPS://segmentfault.com/a/1190000012469713)
 
 ## Web安全
 
-[AJAX请求真的不安全么？谈谈Web安全与AJAX的关系](https://segmentfault.com/a/1190000012693772)
+[AJAX请求真的不安全么？谈谈Web安全与AJAX的关系](HTTPS://segmentfault.com/a/1190000012693772)
