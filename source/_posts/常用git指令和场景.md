@@ -7,6 +7,7 @@ categories:
 - 前端
 keywords: git,git指令,git教程
 ---
+<div class="note info"><p>下面列举一些开发过程中自己遇到的指令，后续会不断完善和修改。</p></div>
 
 # Local操作
 
@@ -15,13 +16,13 @@ keywords: git,git指令,git教程
 设置用户名
 
 ```
-$ git config --global user.name "@yourname"
+$ git config --global user.name "<yourname>"
 ```
 
 设置邮箱
 
 ```
-$ git config --global user.email "@youremail"
+$ git config --global user.email "<youremail>"
 ```
 
 设置颜色提醒
@@ -32,8 +33,8 @@ $ git config --global color.ui "always"
 
 ## 初始化新版本库
 
-```git
-$ git init // 在根目录创建.git文件夹
+```
+$ git init
 ```
 
 ## 添加新文件到版本库
@@ -55,6 +56,8 @@ $ git add *.txt
 ```
 $ git add .
 ```
+
+<!--more-->
 
 ## 提交
 
@@ -306,7 +309,7 @@ $ cp id_rsa*key_backup
 
 3. 生成SSH Key
 ```
-$ ssh-keygen -t rsa -C "@youremail"
+$ ssh-keygen -t rsa -C "<youremail>"
 ```
 
 4. 将id_rsa.pub的内容粘贴到github中
