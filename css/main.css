@@ -1856,7 +1856,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e09639;
+  background: #ff24e9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2976,6 +2976,12 @@ ul.breadcrumb li+li:last-child {
     text-align: justify;
   }
 }
+body {
+  color: #333;
+}
+code {
+  color: #444;
+}
 img#github-emoji {
   margin: 0px;
   padding: 0px;
@@ -2986,12 +2992,10 @@ img#github-emoji {
   box-shadow: none;
 }
 .post-body a {
-  color: #555;
+  color: #fc6423;
   border-bottom: none;
-  text-decoration: underline;
 }
 .post-body a:hover {
-  color: #fc6423;
   border-bottom: none;
   text-decoration: underline;
 }
@@ -3039,4 +3043,10 @@ a.fancybox {
 }
 #qrcode {
   width: 120px;
+}
+.post-toc .nav-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 2.2;
 }
