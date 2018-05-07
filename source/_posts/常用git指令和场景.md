@@ -45,7 +45,7 @@ $ git init
 $ git add somefile.txt
 ```
 
-添加所有txt文件
+添加所有`txt`文件
 
 ```
 $ git add *.txt
@@ -73,7 +73,7 @@ $ git commit -m "some commit text"
 $ git commit -m "some commit text" readme.md
 ```
 
-提交所有修改（自动git add .）
+提交所有修改（自动`git add .`）
 
 ```
 $ git commit -m "some commit text" -a
@@ -87,13 +87,13 @@ $ git commit -C head -a --amend
 
 ## 未提交时撤销修改
 
-将工作区未add的单个文件撤回
+将工作区未`add`的单个文件撤回
 
 ```
 $ git checkout head readme.md
 ```
 
-将工作区未add的所有文件撤回
+将工作区未`add`的所有文件撤回
 
 ```
 $ git checkout head .
@@ -111,7 +111,7 @@ $ git reset head readme.md
 $ git reset head
 ```
 
-复位到head之前的那个版本
+复位到`head`之前的那个版本
 
 ```
 $ git reset --hard head 
@@ -119,12 +119,12 @@ $ git reset --hard head
 
 ## 已提交时撤销修改
 
-获取commit_id
+获取`commit_id`
 ```
 $ git log
 ```
 
-- 完成撤销，同时将代码恢复到前一commit_id 对应的版本，已修改的代码被覆盖
+- 完成撤销，同时将代码恢复到前一`commit_id` 对应的版本，已修改的代码被覆盖
 
 ```
 $ git reset --hard commit_id
@@ -233,7 +233,7 @@ $ gitk gitk --all
 
 ## 克隆版本库
 
-克隆后会自动添加4个config
+克隆后会自动添加4个`config`
 
 ```
 $ git clone <url>
@@ -298,7 +298,7 @@ $ git push --set-upstream <remotename><branchname>
 
 ## SSH key
 
-1. 启动Git Bash控制台
+1. 启动`Git Bash`控制台
 
 2. 如果之前生成过，需要先备份
 ```
@@ -307,9 +307,9 @@ $ mkdir key_backup
 $ cp id_rsa*key_backup
 ```
 
-3. 生成SSH Key
+3. 生成`SSH Key`
 ```
 $ ssh-keygen -t rsa -C "<youremail>"
 ```
 
-4. 将id_rsa.pub的内容粘贴到github中
+4. 将`id_rsa.pub`的内容粘贴到`github`中
