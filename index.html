@@ -293,6 +293,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://louisgo.github.io/wepback按需引入lodash.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Louis Xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://r.photo.store.qq.com/psb?/V14L6Nop1vf7W3/QKhjJC8E6EMjRLbqjmIZRjHT.8DryjxupiXAgmTeHgk!/r/dEQBAAAAAAAA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="徐凌志的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/wepback按需引入lodash.html" itemprop="url">wepback按需引入lodash</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T17:21:15+08:00">2018-05-28</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于：</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-29T09:41:01+08:00">2018-05-29</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/wepback按需引入lodash.html" class="leancloud_visitors" data-flag-title="wepback按需引入lodash">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在前端项目的开发过程中，经常需要引入 <a href="https://github.com/lodash/lodash" target="_blank" rel="noopener">lodash</a> 库，这样就不用自己去费心费力定义一些（可能会坑）的工具函数，使用久经考验的<code>lodash</code>，可以帮助我们更好更快的开发。</p>
+<h1 id="简单的使用方式"><a href="#简单的使用方式" class="headerlink" title="简单的使用方式"></a>简单的使用方式</h1><p>通常情况下，我们直接：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lodash/js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>然后将<code>lodash</code>挂载到<code>window</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>._ = lodash</span><br></pre></td></tr></table></figure>
+<p>这种方式虽然简单粗暴，但是一点也不优雅，因为会污染全局命名空间。所以我们使用<code>webpack</code>，模块化是解决此类问题的最佳思路。</p>
+<h1 id="通过npm引入lodash模块"><a href="#通过npm引入lodash模块" class="headerlink" title="通过npm引入lodash模块"></a>通过npm引入lodash模块</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm i -S lodash</span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"></span><br><span class="line">npm i --save lodash</span><br></pre></td></tr></table></figure>
+<p>然后我们就可以在各个文件中去动态引入<code>lodash</code>，你可以引入全部：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></span><br><span class="line">_.debouce(...)</span><br><span class="line">_.chunk(...)</span><br></pre></td></tr></table></figure>
+<p>或者按需引入某些用到的模块，这减少了打包后的体积（也增加了代码数量…）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> debounce <span class="keyword">from</span> <span class="string">'lodash/debounce'</span></span><br><span class="line"><span class="keyword">import</span> throttle <span class="keyword">from</span> <span class="string">'lodash/throttle'</span></span><br><span class="line"></span><br><span class="line">debounce(...)</span><br><span class="line">throttle(...)</span><br></pre></td></tr></table></figure>
+<h1 id="全局引用lodash"><a href="#全局引用lodash" class="headerlink" title="全局引用lodash"></a>全局引用lodash</h1><p>上述两种方法都需要在每个文件中单独引用，那么有没有一种方法可以一次加载，全局直接引用呢？</p>
+<p>有，还有两种。</p>
+<p>以vue-cli搭建的项目为例，我们在<code>main.js</code>中引入<code>lodash</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>._ = _</span><br></pre></td></tr></table></figure>
+<p>是不是很熟悉呢？这跟开头我们写的似乎没有区别，而且在服务器端渲染的项目中就不可行了，因为服务器端并没有全局的<code>window</code>对象。</p>
+<p>让我们看看第二种方法，同样是在<code>main.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></span><br><span class="line"></span><br><span class="line">vue.prototype._ = _</span><br></pre></td></tr></table></figure>
+<p>我们通过将<code>lodash</code>挂载到<code>vue</code>原型上的方式，就可以在各个<code>.vue</code>文件中，通过<code>this._.lodashFunction</code>的形式去欢快的使用了，当然如果你觉得<code>this._.blabla</code>的形式太丑了，你可以把<code>_</code>换成<code>lodash</code>或者其他好记的单词。</p>
+<h1 id="再进一步"><a href="#再进一步" class="headerlink" title="再进一步"></a>再进一步</h1><p>以上两种全局引入的方式，都有一个问题：<strong>在打包过程中，会产生冗余的<code>lodash</code>代码</strong>。</p>
+<p>因为我们不可能使用<code>lodash</code>的全部方法，虽然官方号称<code>Full build</code>之后再经过<code>gzip</code>体积只有大概<code>24kb</code>，但是在寸土寸金的带宽费面前，我们还是要有些追求的。</p>
+<p>那么可不可以将全局引入和按需引入的方式结合一些呢？当然有，代价就是每个文件还是要引入一次<code>lodash</code>，优点是<code>webpack</code>会自动将你用到的方法进行打包。</p>
+<p>此刻，我们站在了 <a href="https://github.com/lodash/lodash-webpack-plugin" target="_blank" rel="noopener">lodash-webpack</a> 和 <a href="https://www.npmjs.com/package/babel-plugin-lodash" target="_blank" rel="noopener">babel-plugin-lodash</a> 的肩膀上。</p>
+<ol>
+<li>首先安装依赖</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -S lodash</span><br><span class="line">npm install -D lodash-webpack-plugin babel-plugin-lodash</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改<code>.babelrc</code>文件</li>
+</ol>
+<p>在<code>plugins</code>中添加<code>lodash</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;plugins&quot;: [&quot;transform-vue-jsx&quot;, &quot;transform-runtime&quot;, &quot;lodash&quot;]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改<code>wepback.prod.config.js</code></li>
+</ol>
+<p>其实我们只需要精简打包时的体积，所以只修改<code>wepback.prod.config.js</code>这个文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> LodashModuleReplacementPlugin = <span class="built_in">require</span>(<span class="string">'lodash-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> LodashModuleReplacementPlugin(),</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>这个时候我们在每个<code>.vue</code>文件中去引入一次<code>lodash</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    created () &#123;</span><br><span class="line">        <span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">        <span class="built_in">console</span>.log(_.chunk(array, <span class="number">2</span>)) <span class="comment">// [[1, 2], [3, 4], [5]]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样虽然好像全局引入了<code>lodash</code>，但是实际上在打包过程中只会打包<code>chunk</code>这个文件。</p>
+<h1 id="再再进一步"><a href="#再再进一步" class="headerlink" title="再再进一步"></a>再再进一步</h1><p>其实现在的解决方法还是没有到达完美的地步，因为要完成按需打包的方式，还是需要在每个文件中去引入一次<code>lodash</code>，期待后续能有更加完美的解决方案。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://louisgo.github.io/从浏览器地址栏输入URL开始说起（收集整理）.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1441,7 +1650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1489,7 +1698,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
