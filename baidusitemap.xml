@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>http://louisgo.github.io/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97.html</loc>
-    <lastmod>2018-06-20T10:14:14.303Z</lastmod>
+    <loc>http://louisgo.github.io/%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97.html</loc>
+    <lastmod>2018-06-20T10:28:11.619Z</lastmod>
     <data>
         <display>
-        <title>生产力工具指南</title>
+        <title>工具指南</title>
         <pubTime>2018-06-20T08:01:31.000Z</pubTime>
         
         <tag>工具</tag>
@@ -33,9 +33,9 @@
         <title>wepback按需引入lodash</title>
         <pubTime>2018-05-28T09:21:15.000Z</pubTime>
         
-        <tag>工具</tag>
-         
         <tag>webpack</tag>
+         
+        <tag>工具</tag>
          
         <tag>lodash</tag>
          
