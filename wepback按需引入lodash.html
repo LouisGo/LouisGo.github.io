@@ -407,7 +407,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在前端项目的开发过程中，经常需要引入 <a href="https://github.com/lodash/lodash" target="_blank" rel="noopener">lodash</a> 库，这样就不用自己去费心费力定义一些（可能会坑）的工具函数，使用久经考验的<code>lodash</code>，可以帮助我们更好更快的开发。</p>
 <h1 id="简单的使用方式"><a href="#简单的使用方式" class="headerlink" title="简单的使用方式"></a>简单的使用方式</h1><p>通常情况下，我们直接：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lodash/js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lodash/js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>然后将<code>lodash</code>挂载到<code>window</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>._ = lodash</span><br></pre></td></tr></table></figure>
 <p>这种方式虽然简单粗暴，但是一点也不优雅，因为会污染全局命名空间。所以我们使用<code>webpack</code>，模块化是解决此类问题的最佳思路。</p>
@@ -1855,9 +1855,9 @@
     Njo0NCswODowMHKTbbYAAAAASUVORK5CYII="/>
         <div class="post-tags">
           
-            <a href="/tags/webpack/" rel="tag"># webpack</a>
-          
             <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
             <a href="/tags/lodash/" rel="tag"># lodash</a>
           
@@ -1881,6 +1881,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/生产力工具指南.html" rel="prev" title="生产力工具指南">
+                生产力工具指南 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1963,7 +1967,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1980,7 +1984,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2017,7 +2023,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
