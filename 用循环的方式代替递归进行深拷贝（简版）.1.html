@@ -99,21 +99,18 @@
 
 
 
-  <meta name="description" content="先上一张图 12345678function multiply(x, y) &amp;#123;  return x * y;&amp;#125;function printSquare(x) &amp;#123;  var s = multiply(x, x);  console.log(s);&amp;#125;printSquare(5);  宏任务和微任务">
+  <meta name="description" content="以下为待拷贝对象： 123456789let a = &amp;#123;  a1: 1,  a2: &amp;#123;    b1: 1,    b2: &amp;#123;      c1: 1    &amp;#125;  &amp;#125;&amp;#125; 可以转换成树形结构： 123456789   a /   \a1   a2|    / \1   b1 b2    |   |    1  c1        |">
 <meta name="keywords" content="深拷贝,数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用循环的方式代替递归进行深拷贝（简版）">
 <meta property="og:url" content="http://louisgo.github.io/用循环的方式代替递归进行深拷贝（简版）.1.html">
 <meta property="og:site_name" content="徐凌志的博客">
-<meta property="og:description" content="先上一张图 12345678function multiply(x, y) &amp;#123;  return x * y;&amp;#125;function printSquare(x) &amp;#123;  var s = multiply(x, x);  console.log(s);&amp;#125;printSquare(5);  宏任务和微任务">
+<meta property="og:description" content="以下为待拷贝对象： 123456789let a = &amp;#123;  a1: 1,  a2: &amp;#123;    b1: 1,    b2: &amp;#123;      c1: 1    &amp;#125;  &amp;#125;&amp;#125; 可以转换成树形结构： 123456789   a /   \a1   a2|    / \1   b1 b2    |   |    1  c1        |">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/LouisGo/image-hosting/master/event-loop.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/LouisGo/image-hosting/master/call-stack.png">
-<meta property="og:updated_time" content="2018-11-06T08:10:49.120Z">
+<meta property="og:updated_time" content="2018-11-07T02:48:51.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用循环的方式代替递归进行深拷贝（简版）">
-<meta name="twitter:description" content="先上一张图 12345678function multiply(x, y) &amp;#123;  return x * y;&amp;#125;function printSquare(x) &amp;#123;  var s = multiply(x, x);  console.log(s);&amp;#125;printSquare(5);  宏任务和微任务">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/LouisGo/image-hosting/master/event-loop.png">
+<meta name="twitter:description" content="以下为待拷贝对象： 123456789let a = &amp;#123;  a1: 1,  a2: &amp;#123;    b1: 1,    b2: &amp;#123;      c1: 1    &amp;#125;  &amp;#125;&amp;#125; 可以转换成树形结构： 123456789   a /   \a1   a2|    / \1   b1 b2    |   |    1  c1        |">
 
 
 
@@ -392,28 +389,14 @@
       
 
       
-        <h1 id="先上一张图"><a href="#先上一张图" class="headerlink" title="先上一张图"></a>先上一张图</h1><p><img src="https://raw.githubusercontent.com/LouisGo/image-hosting/master/event-loop.png" alt=""></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printSquare</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> s = multiply(x, x);</span><br><span class="line">  <span class="built_in">console</span>.log(s);</span><br><span class="line">&#125;</span><br><span class="line">printSquare(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/LouisGo/image-hosting/master/call-stack.png" alt=""></p>
-<h1 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h1><a id="more"></a>
-<p>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval, setImmediate, I/O, UI rendering</p>
-<p>micro-task(微任务)：Promise，process.nextTick, Object.observe, MutationObserver</p>
-<p><strong>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。听起来有点绕，我们用文章最开始的一段代码说明</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise'</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'then'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'console'</span>);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>这段代码作为宏任务，进入主线程。</li>
-<li>先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)</li>
-<li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。</li>
-<li>遇到console.log()，立即执行。</li>
-<li>好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。</li>
-<li>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event </li>
-<li>Queue开始。我们发现了宏任务Event </li>
-<li>Queue中setTimeout对应的回调函数，立即执行。</li>
-<li>结束。</li>
-</ol>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
-<li>函数的直接调用实际上是call的一种语法糖<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params">word</span>) </span>&#123; <span class="built_in">console</span>.log(world); &#125; </span><br><span class="line">say(<span class="string">"Hello world"</span>); <span class="comment">// == say.call(window, "Hello world");</span></span><br></pre></td></tr></table></figure></li>
-</ul>
+        <p>以下为待拷贝对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  a1: <span class="number">1</span>,</span><br><span class="line">  a2: &#123;</span><br><span class="line">    b1: <span class="number">1</span>,</span><br><span class="line">    b2: &#123;</span><br><span class="line">      c1: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以转换成树形结构：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   a</span><br><span class="line"> /   \</span><br><span class="line">a1   a2</span><br><span class="line">|    <span class="regexp">/ \</span></span><br><span class="line"><span class="regexp">1   b1 b2</span></span><br><span class="line"><span class="regexp">    |   |</span></span><br><span class="line"><span class="regexp">    1  c1</span></span><br><span class="line"><span class="regexp">        |</span></span><br><span class="line"><span class="regexp">        1</span></span><br></pre></td></tr></table></figure>
+<p>用循环遍历一棵树，需要借助一个栈，当栈为空时就遍历完了，栈里面存储下一个需要拷贝的节点</p>
+<p>首先往栈里放入种子数据，key 用来存储放哪一个父元素的哪一个子元素拷贝对象</p>
+<p>然后遍历当前节点下的子元素，如果是对象就放到栈里，否则直接拷贝。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cloneLoop</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> root = &#123;&#125; <span class="comment">// 根节点</span></span><br><span class="line">  <span class="comment">// 处理的栈</span></span><br><span class="line">  <span class="keyword">const</span> cloneStack = [</span><br><span class="line">    &#123;</span><br><span class="line">      parent: root,</span><br><span class="line">      key: <span class="literal">undefined</span>,</span><br><span class="line">      data: x</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (cloneStack.length) &#123;</span><br><span class="line">    <span class="comment">// 深度优先</span></span><br><span class="line">    <span class="keyword">const</span> node = cloneStack.pop()</span><br><span class="line">    <span class="keyword">const</span> parent = node.parent</span><br><span class="line">    <span class="keyword">const</span> key = node.key</span><br><span class="line">    <span class="keyword">const</span> data = node.data</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化复制目标，囡key为undefined则直接拷贝到父元素，否则到子元素</span></span><br><span class="line">    <span class="keyword">let</span> res = parent</span><br><span class="line">    <span class="keyword">if</span> (key !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      res = parent[key] = &#123;&#125; <span class="comment">// res同parent[key]，以下处理res</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> data) &#123;</span><br><span class="line">      <span class="keyword">if</span> (data.hasOwnProperty(key)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (isObject(data[key])) &#123;</span><br><span class="line">          <span class="comment">// 如果子元素存在对象，则往栈顶推入一个待处理的对象</span></span><br><span class="line">          cloneStack.push(&#123;</span><br><span class="line">            parent: res,</span><br><span class="line">            key: key,</span><br><span class="line">            data: data[key]</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          res[key] = data[key] <span class="comment">// 基础类型直接复制</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否为对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> x === <span class="string">'object'</span> || <span class="keyword">typeof</span> x === <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x.nodeType === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 排除html元素</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(x) === <span class="string">'[object Object]'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test demo</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  a1: <span class="number">1</span>,</span><br><span class="line">  a2: &#123;</span><br><span class="line">    b1: <span class="number">1</span>,</span><br><span class="line">    b2: &#123;</span><br><span class="line">      c1: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = cloneLoop(a)</span><br><span class="line"></span><br><span class="line">a.a2.b1 = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// &#123; a1: 1, a2: &#123; b1: 4, b2: &#123; c1: 1 &#125; &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// &#123; a1: 1, a2: &#123; b1: 1, b2: &#123; c1: 1 &#125; &#125; &#125;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1903,17 +1886,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -2044,22 +2018,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#先上一张图"><span class="nav-number">1.</span> <span class="nav-text">先上一张图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宏任务和微任务"><span class="nav-number">2.</span> <span class="nav-text">宏任务和微任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
